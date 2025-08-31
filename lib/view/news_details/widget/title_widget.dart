@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TitleWidget extends StatelessWidget {
   final String? title;
@@ -6,9 +7,16 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title ?? "loading..",
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(
+        title ?? "Loading...",
+        style: TextStyle(
+          fontSize: 22.sp,
+          fontWeight: FontWeight.w700,
+          color: Colors.black87,
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:newsapp/res/getx_localization/languages.dart';
 import 'package:newsapp/res/routes/routes.dart';
 import 'package:newsapp/res/routes/routes_name.dart';
 import 'view/home/home_view.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          translations: Languages(),
+          locale: const Locale('hi', 'IN'),
+          fallbackLocale: const Locale('en', 'US'),
           title: 'News App',
           theme: ThemeData(
             primarySwatch: Colors.blue,

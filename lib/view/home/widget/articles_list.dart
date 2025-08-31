@@ -1,3 +1,4 @@
+import 'package:newsapp/res/componants/internet_exception_widget.dart';
 import 'package:newsapp/res/routes/routes_name.dart';
 import 'package:newsapp/view/home/widget/news_card_widget.dart';
 import 'package:newsapp/view_model/controller/homeview/home_view_controller.dart';
@@ -15,7 +16,11 @@ class ArticlesList extends StatelessWidget {
         return Center(child: CircularProgressIndicator());
       }
       if (controller.articles.isEmpty) {
-        return Center(child: Text("No news available"));
+        return InternetExceptionWidget(
+          onPress: ()=> controller.fetchNews(
+            category: controller.selectedCategory.value,
+          ),
+        );
       }
 
       return ListView.builder(

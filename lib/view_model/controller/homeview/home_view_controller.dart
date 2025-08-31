@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 import 'package:newsapp/data/network/network_api_service.dart';
+import 'package:newsapp/repository/home_repository.dart';
 import 'package:newsapp/res/appurl/app_url.dart';
 
 class HomeViewModel extends GetxController {
-  final _apiService = NetworkApiService();
+  final _newsRepository = NewsRepository();
 
   var isLoading = false.obs;
   var articles = [].obs;
@@ -29,13 +30,7 @@ class HomeViewModel extends GetxController {
   Future<void> fetchNews({String category = "general"}) async {
     try {
       isLoading.value = true;
-
-      final url = ApiConstants.topHeadlines(country: "us", category: category);
-      print("Fetching: $url");
-
-      final data = await _apiService.getApi(url);
-      print("Response: $data");
-
+      final data = await _newsRepository.fetchNews(category);
       articles.value = data['articles'] ?? [];
     } catch (e) {
       print("Error fetching news: $e");

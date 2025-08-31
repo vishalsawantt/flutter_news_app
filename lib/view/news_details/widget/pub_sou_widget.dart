@@ -6,16 +6,31 @@ class PublishedWidget extends StatelessWidget {
   final String? sourceName;
   const PublishedWidget({super.key, this.publishedAt, this.sourceName});
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Published at: ${publishedAt ?? ""}",
-            style: const TextStyle(fontSize: 12, color: Colors.grey)),
-        SizedBox(height: 8.h),
-        Text("Source: ${sourceName ?? "Not Found"}",
-            style: const TextStyle(fontSize: 12, color: Colors.grey)),
+        Row(
+          children: [
+            Icon(Icons.calendar_today, size: 14, color: Colors.grey),
+            SizedBox(width: 6.w),
+            Text(
+              publishedAt ?? "Unknown date",
+              style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(Icons.source, size: 14, color: Colors.grey),
+            SizedBox(width: 6.w),
+            Text(
+              sourceName ?? "Not Found",
+              style: TextStyle(fontSize: 12.sp, color: Colors.grey[600]),
+            ),
+          ],
+        ),
       ],
     );
   }

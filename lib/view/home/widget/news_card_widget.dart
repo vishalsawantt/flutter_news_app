@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:newsapp/res/assets/image_assets.dart';
 
 class NewsCardWidget extends StatelessWidget {
   final Map<String, dynamic> article;
@@ -22,26 +23,30 @@ class NewsCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //Image featch
-            if (imageUrl != null && imageUrl.isNotEmpty)
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(12.r)),
-                child: Image.network(
-                  imageUrl,
-                  height: 200.h,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
+                child: (imageUrl != null && imageUrl.isNotEmpty) 
+                    ? Image.network(
+                      imageUrl,
                       height: 200.h,
-                      color: Colors.grey[300],
-                      child: Icon(
-                        Icons.broken_image,
-                        size: 50,
-                        color: Colors.grey,
-                      ),
-                    );
-                  },
-                ),
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          ImageAssets.brokenImage,
+                          height: 200.h,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    )
+                    : Image.asset(
+                      ImageAssets.brokenImage,
+                      height: 200.h,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )
+                
               ),
 
             //title and description featch
@@ -58,8 +63,9 @@ class NewsCardWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 6.h),
+                  Divider(height: 10),
                   Text(
-                    article['description'] ?? "No Description",
+                    article['description'] ?? "Description not provided",
                     style: TextStyle(fontSize: 14.sp, color: Colors.black87),
                   ),
                 ],

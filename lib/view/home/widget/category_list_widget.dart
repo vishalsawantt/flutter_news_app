@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:newsapp/view_model/controller/homeview/home_view_controller.dart';
+import 'package:newsapp/utils/utils.dart';
 
 class CategoryListWidget extends StatelessWidget {
   final HomeViewModel controller = Get.find();
@@ -9,7 +10,7 @@ class CategoryListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
+      height: 55.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: controller.categories.length,
@@ -20,7 +21,11 @@ class CategoryListWidget extends StatelessWidget {
             final isSelected = controller.selectedCategory.value == category;
 
             return GestureDetector(
-              onTap: () => controller.changeCategory(category),
+              onTap: () {
+                controller.changeCategory(category);
+                Utils.toastMesage(category);
+              },
+
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -30,7 +35,10 @@ class CategoryListWidget extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    category[0].toUpperCase() + category.substring(1),
+                    Get.locale?.languageCode == 'en'
+                        ? category.tr[0].toUpperCase() +
+                              category.tr.substring(1)
+                        : category.tr,
                     style: TextStyle(
                       color: isSelected ? Colors.white : Colors.black,
                     ),
