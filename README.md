@@ -1,16 +1,34 @@
-# newsapp
+# 📰 NewsApp
 
-A new Flutter project.
+A Flutter-based mobile application that delivers the latest news articles across different categories with a clean UI.  
+This project was built to practice **API integration**, **state management with GetX**, and clean app architecture.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
+- 📌 Browse news articles by categories  
+- 🔄 Real-time API integration for fetching news  
+- 📱 Responsive UI using Flutter widgets  
+- 🚀 State Management with **GetX**  
+- 🗂️ Clean project structure with separation of concerns  
+- ➡️ **GetX Routing** for navigation between screens  
+- 💾 Local storage using **SharedPreferences** (store user name and greet user dynamically)
+  
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Framework:** Flutter  
+- **Language:** Dart  
+- **State Management:** GetX  
+- **Routing:** GetX Navigator  
+- **Local Storage:** SharedPreferences  
+- **API Integration:** dio package
+  
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🙌 Acknowledgements
+
+- [Flutter Documentation](https://docs.flutter.dev/)  
+- [GetX Package](https://pub.dev/packages/get)  
+- [News API](https://newsapi.org/)  
